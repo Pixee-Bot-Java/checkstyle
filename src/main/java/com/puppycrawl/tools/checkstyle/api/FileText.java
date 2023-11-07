@@ -19,6 +19,7 @@
 
 package com.puppycrawl.tools.checkstyle.api;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -171,7 +172,7 @@ public final class FileText {
         try (BufferedReader reader = new BufferedReader(new StringReader(fullText))) {
             final ArrayList<String> textLines = new ArrayList<>();
             while (true) {
-                final String line = reader.readLine();
+                final String line = BoundedLineReader.readLine(reader, 5_000_000);
                 if (line == null) {
                     break;
                 }

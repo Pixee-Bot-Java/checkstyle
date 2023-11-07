@@ -236,6 +236,7 @@
     <error-prone.version>2.21.1</error-prone.version>
     <checkerframework.version>3.27.0</checkerframework.version>
     <doxia.version>1.12.0</doxia.version>
+    <versions.java-security-toolkit>1.0.7</versions.java-security-toolkit>
   </properties>
 
   <dependencies>
@@ -418,6 +419,10 @@
       <groupId>org.apache.maven.doxia</groupId>
       <artifactId>doxia-module-xdoc</artifactId>
       <version>${doxia.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.github.pixee</groupId>
+      <artifactId>java-security-toolkit</artifactId>
     </dependency>
   </dependencies>
 
@@ -5142,4 +5147,13 @@
       </build>
     </profile>
   </profiles>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>io.github.pixee</groupId>
+        <artifactId>java-security-toolkit</artifactId>
+        <version>${versions.java-security-toolkit}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 </project>
