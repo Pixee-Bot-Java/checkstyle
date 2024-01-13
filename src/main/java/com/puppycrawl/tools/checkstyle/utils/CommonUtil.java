@@ -19,6 +19,8 @@
 
 package com.puppycrawl.tools.checkstyle.utils;
 
+import io.github.pixee.security.HostValidator;
+import io.github.pixee.security.Urls;
 import java.io.Closeable;
 import java.io.File;
 import java.io.IOException;
@@ -357,7 +359,7 @@ public final class CommonUtil {
     public static URI getWebOrFileProtocolUri(String filename) {
         URI uri;
         try {
-            final URL url = new URL(filename);
+            final URL url = Urls.create(filename, Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS);
             uri = url.toURI();
         }
         catch (URISyntaxException | MalformedURLException ignored) {
