@@ -6,6 +6,8 @@ public class SuppressionXpathRegressionNeedBracesEmptyLoopBody {
     }
 
     public void test() {
-        while(incrementValue() < 5);; // warn
+        while(incrementValue() < 5){
+            ;
+        }; // warn
     }
 }
