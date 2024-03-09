@@ -20,6 +20,7 @@
 package org.checkstyle.base;
 
 import static com.google.common.truth.Truth.assertWithMessage;
+import io.github.pixee.security.BoundedLineReader;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
@@ -520,7 +521,7 @@ public abstract class AbstractItModuleTestSupport extends AbstractPathTestSuppor
                 Paths.get(fileName), StandardCharsets.UTF_8)) {
             int lineNumber = 1;
             while (true) {
-                final String line = br.readLine();
+                final String line = BoundedLineReader.readLine(br, 5_000_000);
                 if (line == null) {
                     break;
                 }
